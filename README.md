@@ -1,33 +1,74 @@
-### Timer
+# Timer Fieldtype for Frappe
 
-Custom Field Type Timer
+A simple **Timer** fieldtype for Frappe/ERPNext that shows an `HH:MM:SS` timer and stores the elapsed time in **seconds**.
 
-### Installation
+---
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+## Install
 
 ```bash
-cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch develop
+cd ~/frappe-bench
+bench get-app https://github.com/tekma-mkb/timer
 bench install-app timer
+bench build
+bench restart
 ```
 
-### Contributing
+---
 
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
+## Usage
 
-```bash
-cd apps/timer
-pre-commit install
+1. In **Customize Form** or **DocType** editor:
+   - Add a field
+   - Fieldtype: `Timer`
+   - Fieldname: e.g. `work_duration`
+
+2. Use in form:
+   - ▶ Start
+   - ⏸ Pause (if allowed)
+   - ⏹ Stop
+
+3. Value is stored as integer seconds (e.g. `3723` → `01:02:03`).
+
+---
+
+## Options
+
+Set via `options` (JSON):
+
+```json
+{
+  "can_pause": true,
+  "commit_interval_sec": 1,
+  "start_by": ["status"]
+}
 ```
 
-Pre-commit is configured to use the following tools for checking and formatting your code:
+- `can_pause`: allow pause/resume (default true)  
+- `commit_interval_sec`: auto-save every N sec (default 1)  
+- `start_by`: list of fieldnames to auto-start the timer when changed  
 
-- ruff
-- eslint
-- prettier
-- pyupgrade
+---
 
-### License
+## Code Access
 
-mit
+Client-side:
+
+```js
+let timer = frm.fields_dict.work_duration;
+timer?.start?.();
+timer?.pause?.();
+timer?.stop?.();
+```
+
+Server-side:
+
+```python
+secs = cint(doc.work_duration or 0)
+```
+
+---
+
+## License
+
+MIT © Tekma MKB
