@@ -1,0 +1,91 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-18 00:40:36.005740",
+ "custom": 1,
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "pic",
+  "jenis_paket",
+  "urutan_produksi",
+  "column_break_cwmg",
+  "timer2",
+  "durasi_mixing_copy",
+  "ss"
+ ],
+ "fields": [
+  {
+   "fieldname": "pic",
+   "fieldtype": "Select",
+   "label": "PIC",
+   "options": "\nBudi Santoso\nSandi\nSanto"
+  },
+  {
+   "fieldname": "jenis_paket",
+   "fieldtype": "Select",
+   "label": "Jenis Paket",
+   "options": "\nSuper\nMix\nBrows"
+  },
+  {
+   "depends_on": "eval:doc.jenis_paket",
+   "fieldname": "urutan_produksi",
+   "fieldtype": "Select",
+   "label": "Urutan Produksi",
+   "options": "\nSatu\nDua\nTiga\nEmpat"
+  },
+  {
+   "fieldname": "column_break_cwmg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "can_pause": 1,
+   "fieldname": "timer2",
+   "fieldtype": "Timer",
+   "in_list_view": 1,
+   "label": "durasi mixing",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "durasi_mixing_copy",
+   "fieldtype": "Timer",
+   "in_list_view": 1,
+   "label": "durasi mixing Copy",
+   "set_only_once": 1,
+   "start_by": "urutan_produksi"
+  },
+  {
+   "fieldname": "ss",
+   "fieldtype": "Timer",
+   "in_list_view": 1,
+   "label": "ss",
+   "set_only_once": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-08-22 13:16:22.467213",
+ "modified_by": "Administrator",
+ "module": "Timer",
+ "name": "Test Timer",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
