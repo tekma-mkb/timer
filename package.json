@@ -1,0 +1,10 @@
+{
+  "name": "frappe-timer",
+  "scripts":{
+    "build": "node update-assets.js && cd ../../apps/frappe && npm run build"
+  },
+  "dependencies": {
+    "fs-extra": "^11.3.1"
+  },
+  "type": "module"
+}

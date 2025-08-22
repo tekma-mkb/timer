@@ -26,7 +26,7 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/timer/css/timer.css"
-# app_include_js = "/assets/timer/js/timer.js"
+app_include_js = "/assets/timer/js/control_timer.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/timer/css/timer.css"
@@ -129,9 +129,9 @@ app_license = "mit"
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+	# "DocField": "timer.overrides.docfield.DocField"
+}
 
 # Document Events
 # ---------------
@@ -242,3 +242,6 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+patches = [
+    "timer.patches.docfield.exec"
+]
