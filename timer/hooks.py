@@ -245,3 +245,14 @@ override_doctype_class = {
 patches = [
     "timer.patches.docfield.exec"
 ]
+
+# my_app/hooks.py
+
+# saat proses migrate/install
+before_migrate = "timer.patches.load"
+after_migrate  = "timer.patches.load"
+after_install  = "timer.patches.load"
+
+# saat sesi web diboot (berguna di web workers)
+boot_session   = "timer.patches.load"
+on_session_creation = "timer.patches.load"
